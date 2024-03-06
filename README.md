@@ -39,4 +39,8 @@ DB : Google Firebase
 
 <교역자>
 
+<<<<<<< HEAD
 Q&A 응답Tab 추가.
+=======
+Q&A 응답Tab 추가
+>>>>>>> 73824315ee4688b1b524178378d2ea2d7a5bf5a8
