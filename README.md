@@ -39,4 +39,4 @@ DB : Google Firebase
 
 <교역자>
 
-Q&A 응답Tab 추가
+Q&A 응답Tab 추가.
