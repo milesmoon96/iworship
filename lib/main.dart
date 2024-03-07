@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:iworship_bible/models/account_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:iworship_bible/providers/album_provider.dart';
 import 'package:iworship_bible/pages/album_view.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,11 +16,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
-      home : ChangeNotifierProvider<AlbumProvider>(
-        create: (context) => AlbumProvider(),
-        child: const AlbumView(),
-      ),
-    );
+    return MultiProvider(providers: [
+      ChangeNotifierProvider(create: (_) => FirebaseAuthProvider()),
+    ],
+    child: MaterialApp(
+      title: 'IWorship Bible',
+      routes: {
+        '/index':(context) => IndexScreen(),
+        '/login':(context) => LoginScreen(),
+        '/splash':(context) => SplashScreen(),
+        '/register':(context) => registerScreen(),
+      },
+      initialRoute: '/splash',
+    ),
+  );
   }
 }
